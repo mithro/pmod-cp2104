@@ -108,23 +108,23 @@ Wire Wire Line
 Wire Wire Line
 	1750 2900 2650 2900
 Wire Wire Line
+	2650 2900 3500 2900
+Wire Wire Line
 	2650 2900 2650 2700
 Wire Wire Line
 	2650 2700 2600 2700
 Wire Wire Line
 	2600 2600 2700 2600
 Wire Wire Line
-	2700 2600 2700 3050
+	2700 3050 2700 2600
 Wire Wire Line
-	2700 3050 2200 3050
+	1700 3050 2200 3050
 Wire Wire Line
-	2200 3050 1700 3050
+	2200 3050 2700 3050
 Wire Wire Line
 	1700 3050 1700 2600
 Wire Wire Line
 	1700 2600 1800 2600
-Text Notes 2000 2900 2    60   ~ 0
-3.3V
 $Comp
 L GND #PWR?
 U 1 1 57F4D651
@@ -187,8 +187,8 @@ F 3 "" H 8250 2850 50  0000 C CNN
 $EndComp
 Text Notes 4000 1600 0    60   ~ 0
 PModUSBUART\n---\nPin 1 - RTS\nPin 2 - RXD\nPin 3 - TXD\nPin 4 - CTS\nPin 5 - GND\nPin 6 - VCC\n\nLCL3V3 - Board *gets* power from VPMOD\nSYS3V3 - Board *provides* power to VPMOD
-Text Notes 5000 6150 0    60   ~ 0
-VIO -> VPMOD\n Thus VPMOD always sets the IO voltage level\n\nREGIN - Regulator input \n\n  Feed from VUSB\nor\n  Feed from 3V3
+Text Notes 3400 4050 0    60   ~ 0
+VIO ==VPMOD\n Thus VPMOD always sets the IO voltage level\n\nREGIN - Regulator input - Feed from VUSB\n\nTake output at VDD to feed PMOD / VIO\n\n\nRegulator can supply 100mA output
 Text Label 8050 4400 0    60   ~ 0
 CP_~RST
 Wire Wire Line
@@ -246,7 +246,7 @@ Wire Wire Line
 Wire Wire Line
 	8000 1550 8150 1550
 Text Label 8600 1050 0    60   ~ 0
-VIO
+VDD
 Wire Wire Line
 	7700 1250 7250 1250
 Wire Wire Line
@@ -350,7 +350,7 @@ Wire Wire Line
 Wire Wire Line
 	-3600 2350 -3750 2350
 Text Label -3150 2150 0    60   ~ 0
-VIO
+VDD
 Wire Wire Line
 	-5300 2350 -4150 2350
 Wire Wire Line
@@ -394,7 +394,7 @@ Wire Wire Line
 Text Label -5300 3900 0    60   ~ 0
 CP_RI
 Text Label -3150 3750 0    60   ~ 0
-VIO
+VDD
 $Comp
 L R RINT1
 U 1 1 57F500C7
@@ -469,7 +469,7 @@ Wire Wire Line
 	-3200 -450 -3200 -300
 Wire Wire Line
 	-3500 -300 -3500 -450
-Text Label -3350 -1050 0    60   ~ 0
+Text Label -3350 -1150 0    60   ~ 0
 VIO
 Wire Wire Line
 	-3200 0    -3200 300 
@@ -478,15 +478,7 @@ Wire Wire Line
 Text Label -2250 300  0    60   ~ 0
 CP_GPIO.2
 Wire Wire Line
-	-3700 -900 -3500 -900
-Wire Wire Line
-	-3500 -900 -3350 -900
-Wire Wire Line
-	-3350 -900 -3200 -900
-Wire Wire Line
-	-3200 -900 -3000 -900
-Wire Wire Line
-	-3350 -900 -3350 -1050
+	-3350 -900 -3350 -950
 Connection ~ -3350 -900
 Wire Wire Line
 	-3200 300  -3000 300 
@@ -511,8 +503,7 @@ F 3 "" H -3000 -600 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	-3000 -900 -3000 -750
-Connection ~ -3200 -900
+	-3000 -1100 -3000 -750
 Text Notes -1750 300  0    60   ~ 0
 < Out
 Text Notes -1750 550  0    60   ~ 0
@@ -537,11 +528,11 @@ PMOD_IO2
 Text Notes -5300 800  0    60   ~ 0
 BiDir<>
 Wire Wire Line
-	-3700 800  -3700 550 
+	-3700 -450 -3700 300 
 Wire Wire Line
-	-3700 550  -3700 300 
+	-3700 300  -3700 550 
 Wire Wire Line
-	-3700 300  -3700 -450
+	-3700 550  -3700 800 
 $Comp
 L R RUIO2
 U 1 1 57F51C24
@@ -554,8 +545,7 @@ F 3 "" H -3700 -600 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	-3700 -900 -3700 -750
-Connection ~ -3500 -900
+	-3700 -1100 -3700 -750
 Connection ~ -3700 550 
 $Comp
 L JUMPER JPDTR1
@@ -674,7 +664,7 @@ Wire Wire Line
 Wire Wire Line
 	-3600 5450 -3750 5450
 Text Label -3150 5250 0    60   ~ 0
-VIO
+VDD
 Wire Wire Line
 	-5300 5450 -5150 5450
 Wire Wire Line
@@ -759,7 +749,7 @@ F 3 "" H 1500 2400 50  0000 C CNN
 	0    -1   1    0   
 $EndComp
 Wire Wire Line
-	-4450 800  -3700 800 
+	-3700 800  -4450 800 
 $Comp
 L JUMPER JPIO21
 U 1 1 57F579C0
@@ -822,4 +812,52 @@ Wire Wire Line
 	600  2500 1350 2500
 Text Notes 7250 900  0    60   ~ 0
 Transmit and Receive indicator LEDs
+Connection ~ 2650 2900
+Text Label 3000 2900 0    60   ~ 0
+VIO
+$Comp
+L JUMPER JPVDD1
+U 1 1 57F5C981
+P 3800 2900
+F 0 "JPVDD1" H 3800 3050 50  0000 C CNN
+F 1 "JUMPER" H 3800 2820 50  0001 C CNN
+F 2 "" H 3800 2900 50  0000 C CNN
+F 3 "" H 3800 2900 50  0000 C CNN
+	1    3800 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 2900 4400 2900
+Text Label 4400 2900 0    60   ~ 0
+VDD
+$Comp
+L VDD #PWR?
+U 1 1 57F5D066
+P 4400 2750
+F 0 "#PWR?" H 4400 2600 50  0001 C CNN
+F 1 "VDD" H 4400 2900 50  0000 C CNN
+F 2 "" H 4400 2750 50  0000 C CNN
+F 3 "" H 4400 2750 50  0000 C CNN
+	1    4400 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 2900 4400 2750
+Text Notes 3400 3150 0    60   ~ 0
+UART Providing 3.3V power to PMOD Connector\nPMOD VCC <-- UART
+Text Label -3350 -950 0    60   ~ 0
+VDD
+Wire Wire Line
+	-3500 -900 -3350 -900
+Wire Wire Line
+	-3350 -900 -3200 -900
+Wire Wire Line
+	-3700 -1100 -3350 -1100
+Wire Wire Line
+	-3350 -1100 -3000 -1100
+Wire Wire Line
+	-3350 -1100 -3350 -1150
+Connection ~ -3350 -1100
+Text Notes -3750 -1800 0    60   ~ 0
+Indicator LEDs are between VIO and VDD. \nPulling low will cause them to light up.\n\nVIO - High - Min 1V8, Max 3V3\nVDD - 3V3\n\n3.3 - 1.8 == 1.5V -> LED doesn't conduct / turn on\n
 $EndSCHEMATC
