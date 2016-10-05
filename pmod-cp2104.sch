@@ -29,6 +29,7 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:pmod-conn_6x2
+LIBS:pmod-cp2104-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -80,42 +81,26 @@ F 3 "" H 4600 2300 50  0000 C CNN
 $EndComp
 Text Notes 1200 4200 0    60   ~ 0
 Pmod Interface Type 4A (expanded UART) \n-----------\nPin 1 - CTS - In  - Peripheral can transmit\nPin 2 - TXD - Out - Data - Host to peripheral\nPin 3 - RXD - In  - Data - Peripheral to host\nPin 4 - RTS - Out - Peripheral ready for data\nPin 5 - GND\nPin 6 - VCC\n\nPin  7 - INT - In -  Interrupt signal from peripheral to host \nPin  8 - RESET - Out - Reset signal for host to reset peripheral \nPin  9 - IO1 - BiDir\nPin 10 - IO2 - BiDir\nPin 11 - GND\nPin 12 - VCC
-Text Label 3050 1450 2    60   ~ 0
+Text Label 3700 1450 2    60   ~ 0
 PMOD_CTS
-Text Label 3050 1550 2    60   ~ 0
+Text Label 3700 1550 2    60   ~ 0
 PMOD_TXD
-Text Label 3050 1650 2    60   ~ 0
+Text Label 3700 1650 2    60   ~ 0
 PMOD_RXD
-Text Label 3050 1750 2    60   ~ 0
+Text Label 3700 1750 2    60   ~ 0
 PMOD_RTS
-Text Label 1350 1450 0    60   ~ 0
+Text Label 600  1450 0    60   ~ 0
 PMOD_INT
-Text Label 1350 1550 0    60   ~ 0
+Text Label 600  1550 0    60   ~ 0
 PMOD_RST
-Text Label 1350 1650 0    60   ~ 0
+Text Label 600  1650 0    60   ~ 0
 PMOD_IO1
-Text Label 1350 1750 0    60   ~ 0
+Text Label 600  1750 0    60   ~ 0
 PMOD_IO2
 Text Label 7750 2100 0    60   ~ 0
 VUSB
 Text Label 2350 2150 2    60   ~ 0
 VPMOD
-Wire Wire Line
-	2600 1450 3050 1450
-Wire Wire Line
-	3050 1550 2600 1550
-Wire Wire Line
-	2600 1650 3050 1650
-Wire Wire Line
-	3050 1750 2600 1750
-Wire Wire Line
-	1350 1450 1800 1450
-Wire Wire Line
-	1800 1550 1350 1550
-Wire Wire Line
-	1350 1650 1800 1650
-Wire Wire Line
-	1800 1750 1350 1750
 Wire Wire Line
 	1800 1950 1750 1950
 Wire Wire Line
@@ -330,11 +315,9 @@ Wire Wire Line
 	8900 4900 9200 4900
 Text Label 9200 4900 0    60   ~ 0
 CP_REGIN
-Text Notes -5100 4950 0    60   ~ 0
+Text Notes -5300 4800 0    60   ~ 0
 RI - Ring Indicator\n * Peripheral -> USB\n * Active Low\n * "Wake host up" signal\n\nMapping to PMOD_INT
-Text Notes 4900 7150 0    60   ~ 0
-RI - Ring Indicator\n * Peripheral -> Host\n * Active Low
-Text Notes -5100 3500 0    60   ~ 0
+Text Notes -5300 3350 0    60   ~ 0
 DTR - Data Terminal Ready\n * USB -> Peripheral\n * Active Low\n * On Windows, DTR is held low while serial port is unopened\n\nMapping to PMOD_RST line
 Text Notes -3000 1350 0    60   ~ 0
 DCD -- Data Carrier Detect\n * Peripheral -> USB\n * Active Low\n * On Linux, while DCD is low, nothing to do.
@@ -343,95 +326,93 @@ DSR -- Data Set Ready\n * Peripheral -> USB\n * Active Low\n * Tied to DCD in "n
 $Comp
 L D DDTR1
 U 1 1 57F4F1C0
-P -3300 2500
-F 0 "DDTR1" H -3300 2600 50  0000 C CNN
-F 1 "D" H -3300 2400 50  0000 C CNN
-F 2 "" H -3300 2500 50  0000 C CNN
-F 3 "" H -3300 2500 50  0000 C CNN
-	1    -3300 2500
+P -3900 2350
+F 0 "DDTR1" H -3900 2450 50  0000 C CNN
+F 1 "D" H -3900 2250 50  0000 C CNN
+F 2 "" H -3900 2350 50  0000 C CNN
+F 3 "" H -3900 2350 50  0000 C CNN
+	1    -3900 2350
 	-1   0    0    1   
 $EndComp
 $Comp
 L R RDTR1
 U 1 1 57F4F1C6
-P -2850 2500
-F 0 "RDTR1" V -2770 2500 50  0000 C CNN
-F 1 "100" V -2850 2500 50  0000 C CNN
-F 2 "" V -2920 2500 50  0000 C CNN
-F 3 "" H -2850 2500 50  0000 C CNN
-	1    -2850 2500
+P -3450 2350
+F 0 "RDTR1" V -3370 2350 50  0000 C CNN
+F 1 "100" V -3450 2350 50  0000 C CNN
+F 2 "" V -3520 2350 50  0000 C CNN
+F 3 "" H -3450 2350 50  0000 C CNN
+	1    -3450 2350
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	-2550 2500 -2700 2500
+	-3150 2350 -3300 2350
 Wire Wire Line
-	-3000 2500 -3150 2500
-Text Label -2550 2300 0    60   ~ 0
+	-3600 2350 -3750 2350
+Text Label -3150 2150 0    60   ~ 0
 VIO
 Wire Wire Line
-	-5100 2500 -3550 2500
+	-5300 2350 -4150 2350
 Wire Wire Line
-	-3550 2500 -3450 2500
-Text Label -5100 2500 0    60   ~ 0
+	-4150 2350 -4050 2350
+Text Label -5300 2350 0    60   ~ 0
 CP_DTR
 Wire Wire Line
-	-2550 2300 -2550 2500
+	-3150 2150 -3150 2350
 $Comp
 L D DRI1
 U 1 1 57F4FF84
-P -3300 4200
-F 0 "DRI1" H -3300 4300 50  0000 C CNN
-F 1 "D" H -3300 4100 50  0000 C CNN
-F 2 "" H -3300 4200 50  0000 C CNN
-F 3 "" H -3300 4200 50  0000 C CNN
-	1    -3300 4200
+P -3900 4050
+F 0 "DRI1" H -3900 4150 50  0000 C CNN
+F 1 "D" H -3900 3950 50  0000 C CNN
+F 2 "" H -3900 4050 50  0000 C CNN
+F 3 "" H -3900 4050 50  0000 C CNN
+	1    -3900 4050
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	-2550 3900 -2550 4200
+	-3150 3750 -3150 4050
 $Comp
 L R RRI1
 U 1 1 57F4FF8B
-P -2850 4200
-F 0 "RRI1" V -2770 4200 50  0000 C CNN
-F 1 "100" V -2850 4200 50  0000 C CNN
-F 2 "" V -2920 4200 50  0000 C CNN
-F 3 "" H -2850 4200 50  0000 C CNN
-	1    -2850 4200
+P -3450 4050
+F 0 "RRI1" V -3370 4050 50  0000 C CNN
+F 1 "100" V -3450 4050 50  0000 C CNN
+F 2 "" V -3520 4050 50  0000 C CNN
+F 3 "" H -3450 4050 50  0000 C CNN
+	1    -3450 4050
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	-2550 4200 -2700 4200
+	-3150 4050 -3300 4050
 Wire Wire Line
-	-3150 4200 -3000 4200
+	-3750 4050 -3600 4050
 Wire Wire Line
-	-4350 4200 -4100 4200
+	-5300 4050 -4700 4050
 Wire Wire Line
-	-4100 4200 -3450 4200
-Text Label -5100 4050 0    60   ~ 0
+	-4700 4050 -4050 4050
+Text Label -5300 3900 0    60   ~ 0
 CP_RI
-Text Label -2550 3900 0    60   ~ 0
+Text Label -3150 3750 0    60   ~ 0
 VIO
 $Comp
 L R RINT1
 U 1 1 57F500C7
-P -4500 4200
-F 0 "RINT1" V -4420 4200 50  0000 C CNN
-F 1 "50" V -4500 4200 50  0000 C CNN
-F 2 "" V -4570 4200 50  0000 C CNN
-F 3 "" H -4500 4200 50  0000 C CNN
-	1    -4500 4200
+P 1500 1450
+F 0 "RINT1" V 1450 1200 50  0000 C CNN
+F 1 "50" V 1500 1450 50  0000 C CNN
+F 2 "" V 1430 1450 50  0000 C CNN
+F 3 "" H 1500 1450 50  0000 C CNN
+	1    1500 1450
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	-4650 4200 -5100 4200
-Text Label -5100 4200 0    60   ~ 0
+Text Label -5300 4050 0    60   ~ 0
 PMOD_INT
 Wire Wire Line
-	-5100 4050 -4100 4050
+	-5300 3900 -4700 3900
 Wire Wire Line
-	-4100 4050 -4100 4200
-Connection ~ -4100 4200
+	-4700 3900 -4700 4050
+Connection ~ -4700 4050
 Text Notes -5300 1800 0    60   ~ 0
 GPIO.3\n * USB->Peripheral\n * Active Low
 Text Notes -3000 1800 0    60   ~ 0
@@ -493,7 +474,7 @@ VIO
 Wire Wire Line
 	-3200 0    -3200 300 
 Wire Wire Line
-	-3500 0    -3500 300 
+	-3500 300  -3500 0   
 Text Label -2250 300  0    60   ~ 0
 CP_GPIO.2
 Wire Wire Line
@@ -556,11 +537,11 @@ PMOD_IO2
 Text Notes -5300 800  0    60   ~ 0
 BiDir<>
 Wire Wire Line
-	-3700 -450 -3700 300 
+	-3700 800  -3700 550 
 Wire Wire Line
-	-3700 300  -3700 550 
+	-3700 550  -3700 300 
 Wire Wire Line
-	-3700 550  -3700 800 
+	-3700 300  -3700 -450
 $Comp
 L R RUIO2
 U 1 1 57F51C24
@@ -579,93 +560,89 @@ Connection ~ -3700 550
 $Comp
 L JUMPER JPDTR1
 U 1 1 57F52AB5
-P -3900 2750
-F 0 "JPDTR1" H -3900 2900 50  0000 C CNN
-F 1 "JUMPER" H -3900 2670 50  0000 C CNN
-F 2 "" H -3900 2750 50  0000 C CNN
-F 3 "" H -3900 2750 50  0000 C CNN
-	1    -3900 2750
+P -4500 2600
+F 0 "JPDTR1" H -4500 2750 50  0000 C CNN
+F 1 "JUMPER" H -4500 2520 50  0000 C CNN
+F 2 "" H -4500 2600 50  0000 C CNN
+F 3 "" H -4500 2600 50  0000 C CNN
+	1    -4500 2600
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	-3600 2750 -3550 2750
+	-4200 2600 -4150 2600
 Wire Wire Line
-	-3550 2750 -3550 2500
-Connection ~ -3550 2500
-Text Label -5100 2750 0    60   ~ 0
+	-4150 2600 -4150 2350
+Connection ~ -4150 2350
+Text Label -5300 2600 0    60   ~ 0
 PMOD_RST
 $Comp
 L R RRST1
 U 1 1 57F52EB3
-P -4450 2750
-F 0 "RRST1" V -4370 2750 50  0000 C CNN
-F 1 "50" V -4450 2750 50  0000 C CNN
-F 2 "" V -4520 2750 50  0000 C CNN
-F 3 "" H -4450 2750 50  0000 C CNN
-	1    -4450 2750
+P 1500 1550
+F 0 "RRST1" V 1450 1300 50  0000 C CNN
+F 1 "50" V 1500 1550 50  0000 C CNN
+F 2 "" V 1430 1550 50  0000 C CNN
+F 3 "" H 1500 1550 50  0000 C CNN
+	1    1500 1550
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	-5100 2750 -4600 2750
-Wire Wire Line
-	-4300 2750 -4200 2750
+	-5300 2600 -4800 2600
 $Comp
 L R RIO2
 U 1 1 57F53D72
-P -2600 800
-F 0 "RIO2" V -2520 800 50  0000 C CNN
-F 1 "50" V -2600 800 50  0000 C CNN
-F 2 "" V -2670 800 50  0000 C CNN
-F 3 "" H -2600 800 50  0000 C CNN
-	1    -2600 800 
+P 1500 1750
+F 0 "RIO2" V 1450 1500 50  0000 C CNN
+F 1 "50" V 1500 1750 50  0000 C CNN
+F 2 "" V 1430 1750 50  0000 C CNN
+F 3 "" H 1500 1750 50  0000 C CNN
+	1    1500 1750
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	-3000 800  -2750 800 
-Wire Wire Line
-	-2250 800  -2450 800 
+	-3000 800  -2250 800 
 $Comp
 L R RTX1
 U 1 1 57F54253
-P 2350 4900
-F 0 "RTX1" V 2430 4900 50  0000 C CNN
-F 1 "50" V 2350 4900 50  0000 C CNN
-F 2 "" V 2280 4900 50  0000 C CNN
-F 3 "" H 2350 4900 50  0000 C CNN
-	1    2350 4900
+P 2850 1550
+F 0 "RTX1" V 2800 1800 50  0000 C CNN
+F 1 "50" V 2850 1550 50  0000 C CNN
+F 2 "" V 2780 1550 50  0000 C CNN
+F 3 "" H 2850 1550 50  0000 C CNN
+	1    2850 1550
 	0    1    1    0   
 $EndComp
 $Comp
 L R RRX1
 U 1 1 57F543D4
-P 2350 5100
-F 0 "RRX1" V 2430 5100 50  0000 C CNN
-F 1 "50" V 2350 5100 50  0000 C CNN
-F 2 "" V 2280 5100 50  0000 C CNN
-F 3 "" H 2350 5100 50  0000 C CNN
-	1    2350 5100
+P 2850 1650
+F 0 "RRX1" V 2800 1900 50  0000 C CNN
+F 1 "50" V 2850 1650 50  0000 C CNN
+F 2 "" V 2780 1650 50  0000 C CNN
+F 3 "" H 2850 1650 50  0000 C CNN
+	1    2850 1650
 	0    1    1    0   
 $EndComp
 $Comp
 L R RCTS1
 U 1 1 57F54490
-P 2350 5300
-F 0 "RCTS1" V 2430 5300 50  0000 C CNN
-F 1 "50" V 2350 5300 50  0000 C CNN
-F 2 "" V 2280 5300 50  0000 C CNN
-F 3 "" H 2350 5300 50  0000 C CNN
-	1    2350 5300
+P 2850 1450
+F 0 "RCTS1" V 2800 1700 50  0000 C CNN
+F 1 "50" V 2850 1450 50  0000 C CNN
+F 2 "" V 2780 1450 50  0000 C CNN
+F 3 "" H 2850 1450 50  0000 C CNN
+	1    2850 1450
 	0    1    1    0   
 $EndComp
 $Comp
 L R RRTS1
 U 1 1 57F545A3
-P 2350 5500
-F 0 "RRTS1" V 2430 5500 50  0000 C CNN
-F 1 "50" V 2350 5500 50  0000 C CNN
-F 2 "" V 2280 5500 50  0000 C CNN
-F 3 "" H 2350 5500 50  0000 C CNN
-	1    2350 5500
+P 2850 1750
+F 0 "RRTS1" V 2800 2000 50  0000 C CNN
+F 1 "50" V 2850 1750 50  0000 C CNN
+F 2 "" V 2780 1750 50  0000 C CNN
+F 3 "" H 2850 1750 50  0000 C CNN
+	1    2850 1750
 	0    1    1    0   
 $EndComp
 Wire Wire Line
@@ -687,74 +664,76 @@ Wire Wire Line
 $Comp
 L D DSP1
 U 1 1 57F55702
-P -4250 5500
-F 0 "DSP1" H -4250 5600 50  0000 C CNN
-F 1 "D" H -4250 5400 50  0000 C CNN
-F 2 "" H -4250 5500 50  0000 C CNN
-F 3 "" H -4250 5500 50  0000 C CNN
-	1    -4250 5500
+P -3900 5450
+F 0 "DSP1" H -3900 5550 50  0000 C CNN
+F 1 "D" H -3900 5350 50  0000 C CNN
+F 2 "" H -3900 5450 50  0000 C CNN
+F 3 "" H -3900 5450 50  0000 C CNN
+	1    -3900 5450
 	-1   0    0    1   
 $EndComp
 $Comp
 L R RSP1
 U 1 1 57F55708
-P -3800 5500
-F 0 "RSP1" V -3720 5500 50  0000 C CNN
-F 1 "100" V -3800 5500 50  0000 C CNN
-F 2 "" V -3870 5500 50  0000 C CNN
-F 3 "" H -3800 5500 50  0000 C CNN
-	1    -3800 5500
+P -3450 5450
+F 0 "RSP1" V -3370 5450 50  0000 C CNN
+F 1 "100" V -3450 5450 50  0000 C CNN
+F 2 "" V -3520 5450 50  0000 C CNN
+F 3 "" H -3450 5450 50  0000 C CNN
+	1    -3450 5450
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	-3500 5300 -3500 5500
+	-3150 5250 -3150 5450
 Wire Wire Line
-	-3500 5500 -3650 5500
+	-3150 5450 -3300 5450
 Wire Wire Line
-	-3950 5500 -4100 5500
-Text Label -3500 5300 0    60   ~ 0
+	-3600 5450 -3750 5450
+Text Label -3150 5250 0    60   ~ 0
 VIO
 Wire Wire Line
-	-5100 5500 -4950 5500
+	-5300 5450 -5150 5450
 Wire Wire Line
-	-4950 5500 -4400 5500
-Text Label -5100 5500 0    60   ~ 0
+	-5150 5450 -4050 5450
+Text Label -5300 5450 0    60   ~ 0
 CP_~SUSPEND~
-Text Notes -5100 6250 0    60   ~ 0
+Text Notes -5300 6200 0    60   ~ 0
 ~SUSPEND~ is asserted (goes low) when either;\n * CP2104 enters USB suspend mode\n * CP2104 is reset but not yet enumerated\n
-Connection ~ -4950 5500
+Connection ~ -5150 5450
 Wire Wire Line
-	-4950 5500 -4950 5700
+	-5150 5450 -5150 5650
 Wire Wire Line
-	-4950 5700 -4900 5700
+	-5150 5650 -5100 5650
 $Comp
 L R RDSP1
 U 1 1 57F55A10
-P -4750 5700
-F 0 "RDSP1" V -4670 5700 50  0000 C CNN
-F 1 "10k" V -4750 5700 50  0000 C CNN
-F 2 "" V -4820 5700 50  0000 C CNN
-F 3 "" H -4750 5700 50  0000 C CNN
-	1    -4750 5700
+P -4950 5650
+F 0 "RDSP1" V -4870 5650 50  0000 C CNN
+F 1 "10k" V -4950 5650 50  0000 C CNN
+F 2 "" V -5020 5650 50  0000 C CNN
+F 3 "" H -4950 5650 50  0000 C CNN
+	1    -4950 5650
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	-4600 5700 -4500 5700
+	-4800 5650 -4700 5650
 Wire Wire Line
-	-4500 5700 -4500 5750
+	-4700 5650 -4700 5700
 $Comp
 L GND #PWR?
 U 1 1 57F55C73
-P -4500 5750
-F 0 "#PWR?" H -4500 5500 50  0001 C CNN
-F 1 "GND" H -4500 5600 50  0000 C CNN
-F 2 "" H -4500 5750 50  0000 C CNN
-F 3 "" H -4500 5750 50  0000 C CNN
-	1    -4500 5750
+P -4700 5700
+F 0 "#PWR?" H -4700 5450 50  0001 C CNN
+F 1 "GND" H -4700 5550 50  0000 C CNN
+F 2 "" H -4700 5700 50  0000 C CNN
+F 3 "" H -4700 5700 50  0000 C CNN
+	1    -4700 5700
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	-3500 300  -3700 300 
+	-3800 300  -3700 300 
+Wire Wire Line
+	-3700 300  -3500 300 
 Connection ~ -3700 300 
 $Comp
 L JUMPER JPIO11
@@ -784,23 +763,19 @@ Wire Wire Line
 	-2300 300  -2250 300 
 Wire Wire Line
 	-3000 550  -2900 550 
-Wire Wire Line
-	-3700 300  -3800 300 
 $Comp
 L R RIO1
 U 1 1 57F579B8
-P -4100 800
-F 0 "RIO1" V -4020 800 50  0000 C CNN
-F 1 "50" V -4100 800 50  0000 C CNN
-F 2 "" V -4170 800 50  0000 C CNN
-F 3 "" H -4100 800 50  0000 C CNN
-	1    -4100 800 
+P 1500 1650
+F 0 "RIO1" V 1450 1900 50  0000 C CNN
+F 1 "50" V 1500 1650 50  0000 C CNN
+F 2 "" V 1430 1650 50  0000 C CNN
+F 3 "" H 1500 1650 50  0000 C CNN
+	1    1500 1650
 	0    -1   1    0   
 $EndComp
 Wire Wire Line
-	-3700 800  -3950 800 
-Wire Wire Line
-	-4450 800  -4250 800 
+	-4450 800  -3700 800 
 $Comp
 L JUMPER JPIO21
 U 1 1 57F579C0
@@ -829,4 +804,36 @@ Wire Wire Line
 	-4400 300  -4450 300 
 Wire Wire Line
 	-3700 550  -3800 550 
+Wire Wire Line
+	2600 1450 2700 1450
+Wire Wire Line
+	2600 1550 2700 1550
+Wire Wire Line
+	2600 1650 2700 1650
+Wire Wire Line
+	2600 1750 2700 1750
+Wire Wire Line
+	3000 1450 3700 1450
+Wire Wire Line
+	3700 1550 3000 1550
+Wire Wire Line
+	3000 1650 3700 1650
+Wire Wire Line
+	3700 1750 3000 1750
+Wire Wire Line
+	1800 1450 1650 1450
+Wire Wire Line
+	1650 1550 1800 1550
+Wire Wire Line
+	1800 1650 1650 1650
+Wire Wire Line
+	1650 1750 1800 1750
+Wire Wire Line
+	1350 1450 600  1450
+Wire Wire Line
+	600  1550 1350 1550
+Wire Wire Line
+	600  1650 1350 1650
+Wire Wire Line
+	600  1750 1350 1750
 $EndSCHEMATC
