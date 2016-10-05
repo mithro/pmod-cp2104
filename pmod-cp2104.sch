@@ -55,7 +55,7 @@ F 3 "" H 2200 1700 60  0000 C CNN
 	1    2200 1700
 	-1   0    0    -1  
 $EndComp
-Text Notes 1350 5150 0    60   ~ 0
+Text Notes 1200 5100 0    60   ~ 0
 UART with hardware flow Control\n-------------------\nTXD ->\nRXD <-\nCTS <-\nRTS ->\n
 $Comp
 L D DTX1
@@ -645,22 +645,6 @@ F 3 "" H 2850 1750 50  0000 C CNN
 	1    2850 1750
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	1950 4900 2200 4900
-Wire Wire Line
-	1950 5100 2200 5100
-Wire Wire Line
-	1950 5300 2200 5300
-Wire Wire Line
-	1950 5500 2200 5500
-Wire Wire Line
-	2500 4900 2750 4900
-Wire Wire Line
-	2500 5100 2750 5100
-Wire Wire Line
-	2500 5300 2750 5300
-Wire Wire Line
-	2500 5500 2750 5500
 $Comp
 L D DSP1
 U 1 1 57F55702
