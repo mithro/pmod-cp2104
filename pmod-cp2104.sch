@@ -144,20 +144,20 @@ Text Notes 3950 -450 0    60   ~ 0
 PModUSBUART\n---\nPin 1 - RTS\nPin 2 - RXD\nPin 3 - TXD\nPin 4 - CTS\nPin 5 - GND\nPin 6 - VCC\n\nLCL3V3 - Board *gets* power from VPMOD\nSYS3V3 - Board *provides* power to VPMOD
 Text Notes 4000 2550 0    60   ~ 0
 VIO ==VPMOD\n Thus VPMOD always sets the IO voltage level\n\nREGIN - Regulator input - Feed from VUSB\n\nTake output at VDD to feed PMOD / VIO\n\n\nRegulator can supply 100mA output
-Text Label 5800 4400 1    60   ~ 0
+Text Label 5800 4450 1    60   ~ 0
 CP_~RST
 $Comp
 L R RURST1
 U 1 1 57F4DB18
-P 5800 3850
-F 0 "RURST1" V 5700 3850 50  0000 C CNN
-F 1 "4k7" V 5800 3850 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 5730 3850 50  0001 C CNN
-F 3 "" H 5800 3850 50  0000 C CNN
-	1    5800 3850
+P 5800 3800
+F 0 "RURST1" V 5700 3800 50  0000 C CNN
+F 1 "4k7" V 5800 3800 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 5730 3800 50  0001 C CNN
+F 3 "" H 5800 3800 50  0000 C CNN
+	1    5800 3800
 	1    0    0    -1  
 $EndComp
-Text Label 5800 3550 0    60   ~ 0
+Text Label 5800 3500 0    60   ~ 0
 VIO
 $Comp
 L R RDRX1
@@ -238,10 +238,10 @@ CP_REGIN
 Text Notes 15050 6600 0    60   ~ 0
 RI - Ring Indicator\n * Peripheral -> USB\n * Active Low\n * "Wake host up" signal\n\nMapping to PMOD_INT
 Text Notes 15050 5150 0    60   ~ 0
-DTR - Data Terminal Ready\n * USB -> Peripheral\n * Active Low\n * On Windows, DTR is held low while serial port is unopened\n\nMapping to PMOD_RST line
-Text Notes 17350 3150 0    60   ~ 0
+DTR - Data Terminal Ready\n * USB -> Peripheral\n * Active Low\n * On Windows, DTR is held low while serial port is unopened\n\nFIXME: Wrong?\nMapping to PMOD_RST line
+Text Notes 17350 3550 0    60   ~ 0
 DCD -- Data Carrier Detect\n * Peripheral -> USB\n * Active Low\n * On Linux, while DCD is low, nothing to do.
-Text Notes 15050 3150 0    60   ~ 0
+Text Notes 15050 3550 0    60   ~ 0
 DSR -- Data Set Ready\n * Peripheral -> USB\n * Active Low\n * Tied to DCD in "null modem" config.
 $Comp
 L D DDTR1
@@ -308,9 +308,9 @@ F 3 "" H 1500 2200 50  0000 C CNN
 $EndComp
 Text Label 15050 5850 0    60   ~ 0
 PMOD_INT
-Text Notes 15050 3600 0    60   ~ 0
+Text Notes 15050 3050 0    60   ~ 0
 GPIO.3\n * USB->Peripheral\n * Active Low
-Text Notes 17350 3600 0    60   ~ 0
+Text Notes 17350 3050 0    60   ~ 0
 GPIO.2\n * USB->Peripheral\n * Active Low
 $Comp
 L D DIO2
@@ -365,7 +365,7 @@ L R RUIO1
 U 1 1 57F51574
 P 17350 1200
 F 0 "RUIO1" V 17430 1200 50  0000 C CNN
-F 1 "10k" V 17350 1200 50  0000 C CNN
+F 1 "4k7" V 17350 1200 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603" V 17280 1200 50  0001 C CNN
 F 3 "" H 17350 1200 50  0000 C CNN
 	1    17350 1200
@@ -398,7 +398,7 @@ L R RUIO2
 U 1 1 57F51C24
 P 16650 1200
 F 0 "RUIO2" V 16730 1200 50  0000 C CNN
-F 1 "10k" V 16650 1200 50  0000 C CNN
+F 1 "4k7" V 16650 1200 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603" V 16580 1200 50  0001 C CNN
 F 3 "" H 16650 1200 50  0000 C CNN
 	1    16650 1200
@@ -514,7 +514,7 @@ L R RUSP1
 U 1 1 57F55A10
 P 3550 5300
 F 0 "RUSP1" V 3630 5300 50  0000 C CNN
-F 1 "10k" V 3550 5300 50  0000 C CNN
+F 1 "4k7" V 3550 5300 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603" V 3480 5300 50  0001 C CNN
 F 3 "" H 3550 5300 50  0000 C CNN
 	1    3550 5300
@@ -614,7 +614,7 @@ F 3 "" H 4400 2750 50  0000 C CNN
 	1    4400 2750
 	1    0    0    -1  
 $EndComp
-Text Notes 3400 3150 0    60   ~ 0
+Text Notes 4650 3100 0    60   ~ 0
 UART Providing 3.3V power to PMOD Connector\nPMOD VCC <-- UART
 Text Label 17000 850  0    60   ~ 0
 VDD
@@ -644,9 +644,9 @@ Wire Wire Line
 Wire Wire Line
 	2600 2600 2700 2600
 Wire Wire Line
-	2700 2600 2700 3050
+	2700 3050 2700 2600
 Wire Wire Line
-	2700 3050 1700 3050
+	1700 3050 2700 3050
 Wire Wire Line
 	1700 3050 1700 2600
 Wire Wire Line
@@ -672,9 +672,9 @@ Wire Wire Line
 	8400 5900 8400 5950
 Connection ~ 8400 5900
 Wire Wire Line
-	5800 4000 5800 4600
+	5800 3950 5800 4600
 Wire Wire Line
-	5800 3700 5800 3550
+	5800 3650 5800 3500
 Wire Wire Line
 	1750 5200 1900 5200
 Wire Wire Line
@@ -701,7 +701,7 @@ Wire Wire Line
 Wire Wire Line
 	6750 3800 6750 3900
 Wire Wire Line
-	6000 3800 6750 3800
+	6000 3800 7500 3800
 Wire Wire Line
 	17200 4150 17050 4150
 Wire Wire Line
@@ -828,7 +828,7 @@ Connection ~ 2650 2900
 Wire Wire Line
 	4100 2900 4400 2900
 Wire Wire Line
-	4400 2900 4400 2750
+	4400 2750 4400 3200
 Wire Wire Line
 	16850 900  17150 900 
 Wire Wire Line
@@ -900,16 +900,16 @@ Wire Wire Line
 Wire Wire Line
 	7500 3600 7500 5200
 Wire Wire Line
-	5500 4600 5500 4400
+	5500 4600 5500 4550
 Wire Wire Line
-	5500 4400 4250 4400
+	5500 4550 4250 4550
 Wire Wire Line
-	5600 4600 5600 4300
+	5600 4600 5600 4450
 Wire Wire Line
-	5600 4300 4250 4300
-Text Label 4250 4400 0    60   ~ 0
+	5600 4450 4250 4450
+Text Label 4250 4550 0    60   ~ 0
 CP_GPIO.2
-Text Label 4250 4300 0    60   ~ 0
+Text Label 4250 4450 0    60   ~ 0
 CP_GPIO.3
 Wire Wire Line
 	4250 7300 6650 7300
@@ -938,4 +938,87 @@ F 3 "" H 6800 5750 50  0000 C CNN
 	1    6800 5750
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	6500 5100 6900 5100
+Text Label 6900 5100 0    60   ~ 0
+VDD
+$Comp
+L D DVD1
+U 1 1 57F636FC
+P 4400 3350
+F 0 "DVD1" H 4400 3450 50  0000 C CNN
+F 1 "D" H 4400 3250 50  0001 C CNN
+F 2 "LEDs:LED_0402" H 4400 3350 50  0001 C CNN
+F 3 "" H 4400 3350 50  0000 C CNN
+	1    4400 3350
+	0    1    -1   0   
+$EndComp
+$Comp
+L R RDVD1
+U 1 1 57F63702
+P 4400 3800
+F 0 "RDVD1" V 4480 3800 50  0000 C CNN
+F 1 "LEDO" V 4400 3800 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 4330 3800 50  0001 C CNN
+F 3 "" H 4400 3800 50  0000 C CNN
+	1    4400 3800
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	4400 3950 4400 4050
+Wire Wire Line
+	4400 3650 4400 3500
+$Comp
+L GND #PWR?
+U 1 1 57F63A8D
+P 4400 4050
+F 0 "#PWR?" H 4400 3800 50  0001 C CNN
+F 1 "GND" H 4400 3900 50  0000 C CNN
+F 2 "" H 4400 4050 50  0000 C CNN
+F 3 "" H 4400 4050 50  0000 C CNN
+	1    4400 4050
+	-1   0    0    -1  
+$EndComp
+Connection ~ 4400 2900
+$Comp
+L C CVD1
+U 1 1 57F6453F
+P 4150 3650
+F 0 "CVD1" H 4175 3750 50  0000 L CNN
+F 1 "1uF" H 4175 3550 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805" H 4188 3500 50  0001 C CNN
+F 3 "" H 4150 3650 50  0000 C CNN
+	1    4150 3650
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 3500 4150 2900
+Connection ~ 4150 2900
+Wire Wire Line
+	4150 4000 5050 4000
+Wire Wire Line
+	4150 4000 4150 3800
+Connection ~ 4400 4000
+Connection ~ 7500 3800
+Connection ~ 6750 3800
+Text Notes 14950 4150 2    60   ~ 0
+Out >
+Text Notes 14950 5700 2    60   ~ 0
+In <
+Text Notes 3200 1000 0    60   ~ 0
+FIXME: Host here means??
+$Comp
+L SW_PUSH SW1
+U 1 1 57F6685A
+P 5350 4000
+F 0 "SW1" H 5500 4110 50  0000 C CNN
+F 1 "SW_PUSH" H 5350 3920 50  0000 C CNN
+F 2 "" H 5350 4000 50  0000 C CNN
+F 3 "" H 5350 4000 50  0000 C CNN
+	1    5350 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 4000 5800 4000
+Connection ~ 5800 4000
 $EndSCHEMATC
