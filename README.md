@@ -33,6 +33,15 @@ It should be a drop in replacement for the
 [PModUSBUART](https://store.digilentinc.com/pmodusbuart-usb-to-uart-interface/)
 while adding support for the extra signals in the PMod Type 4A UART.
 
+# Parts
+
+## PCB Sizes
+
+ * Jumpers are standard 2.54mm pin headers.
+ * All capacitors are `0805`
+ * All LEDs are `0603`
+ * All resistors are `0402`
+
 # License
 
 It is available under a [CC-BY-SA 4.0 License](LICENSE), see [LICENSE](LICENSE)
