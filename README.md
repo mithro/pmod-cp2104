@@ -39,8 +39,8 @@ while adding support for the extra signals in the PMod Type 4A UART.
 
  * Jumpers are standard 2.54mm pin headers.
  * All capacitors are `0805`
- * All LEDs are `0603`
- * All resistors are `0402`
+ * All LEDs are `0402`
+ * All resistors are `0603`
 
 # License
 
