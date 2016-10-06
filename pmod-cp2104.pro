@@ -1,4 +1,4 @@
-update=Wed 05 Oct 2016 08:59:17 PM AEDT
+update=Thu 06 Oct 2016 08:24:34 PM AEDT
 version=1
 last_client=kicad
 [pcbnew]
@@ -59,3 +59,4 @@ LibName27=atmel
 LibName28=contrib
 LibName29=valves
 LibName30=libraries/pmod-conn_6x2
+LibName31=libraries/cp2104
