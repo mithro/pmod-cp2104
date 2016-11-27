@@ -1,4 +1,4 @@
-update=Thu 06 Oct 2016 08:24:34 PM AEDT
+update=Sun 27 Nov 2016 01:21:17 PM AEDT
 version=1
 last_client=kicad
 [pcbnew]
@@ -27,7 +27,7 @@ NetIExt=net
 version=1
 [eeschema]
 version=1
-LibDir=libraries
+LibDir=libraries;external/pmod
 [eeschema/libraries]
 LibName1=power
 LibName2=device
@@ -58,5 +58,5 @@ LibName26=opto
 LibName27=atmel
 LibName28=contrib
 LibName29=valves
-LibName30=libraries/pmod-conn_6x2
-LibName31=libraries/cp2104
+LibName30=libraries/cp2104
+LibName31=external/pmod/pmod

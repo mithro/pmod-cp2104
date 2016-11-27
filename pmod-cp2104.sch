@@ -28,8 +28,8 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:pmod-conn_6x2
 LIBS:cp2104
+LIBS:pmod
 LIBS:pmod-cp2104-cache
 EELAYER 25 0
 EELAYER END
@@ -45,18 +45,7 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L PMOD-CONN_6X2 P1
-U 1 1 57F4CF0B
-P 2690 4475
-F 0 "P1" H 2690 4825 60  0000 C CNN
-F 1 "PMOD-CONN_6X2" V 2690 4475 39  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Angled_2x06" H 2690 4475 60  0001 C CNN
-F 3 "" H 2690 4475 60  0000 C CNN
-	1    2690 4475
-	-1   0    0    -1  
-$EndComp
-Text Notes 2390 1445 0    60   ~ 0
+Text Notes 780  1945 0    60   ~ 0
 UART with hardware flow Control\n-------------------\nTXD ->\nRXD <-\nCTS <-\nRTS ->\n
 $Comp
 L D DTX1
@@ -80,23 +69,23 @@ F 3 "" H 2990 7025 50  0000 C CNN
 	1    2990 7025
 	1    0    0    1   
 $EndComp
-Text Notes 865  3840 0    60   ~ 0
+Text Notes 3255 2770 0    60   ~ 0
 Pmod Interface Type 4A (expanded UART) \n-----------\nPin 1 - CTS - In  - Peripheral can transmit\nPin 2 - TXD - Out - Data - Host to peripheral\nPin 3 - RXD - In  - Data - Peripheral to host\nPin 4 - RTS - Out - Peripheral ready for data\nPin 5 - GND\nPin 6 - VCC\n\nPin  7 - INT - In -  Interrupt signal from peripheral to host \nPin  8 - RESET - Out - Reset signal for host to reset peripheral \nPin  9 - IO1 - BiDir\nPin 10 - IO2 - BiDir\nPin 11 - GND\nPin 12 - VCC
-Text Label 4190 4225 2    60   ~ 0
+Text Label 3285 3495 2    60   ~ 0
 PMOD_CTS
-Text Label 4190 4325 2    60   ~ 0
+Text Label 3285 3595 2    60   ~ 0
 PMOD_TXD
-Text Label 4190 4425 2    60   ~ 0
+Text Label 3285 3695 2    60   ~ 0
 PMOD_RXD
-Text Label 4190 4525 2    60   ~ 0
+Text Label 3285 3795 2    60   ~ 0
 PMOD_RTS
-Text Label 1090 4225 0    60   ~ 0
+Text Label 3285 4195 2    60   ~ 0
 PMOD_INT
-Text Label 1090 4325 0    60   ~ 0
+Text Label 3285 4295 2    60   ~ 0
 PMOD_RST
-Text Label 1090 4425 0    60   ~ 0
+Text Label 3285 4395 2    60   ~ 0
 PMOD_IO1
-Text Label 1090 4525 0    60   ~ 0
+Text Label 3285 4495 2    60   ~ 0
 PMOD_IO2
 Text Label 8390 7225 0    60   ~ 0
 VUSB
@@ -105,12 +94,12 @@ VPMOD
 $Comp
 L GND #PWR01
 U 1 1 57F4D651
-P 2690 5125
-F 0 "#PWR01" H 2690 4875 50  0001 C CNN
-F 1 "GND" H 2690 4975 50  0000 C CNN
-F 2 "" H 2690 5125 50  0000 C CNN
-F 3 "" H 2690 5125 50  0000 C CNN
-	1    2690 5125
+P 2200 5045
+F 0 "#PWR01" H 2200 4795 50  0001 C CNN
+F 1 "GND" H 2200 4895 50  0000 C CNN
+F 2 "" H 2200 5045 50  0000 C CNN
+F 3 "" H 2200 5045 50  0000 C CNN
+	1    2200 5045
 	-1   0    0    -1  
 $EndComp
 $Comp
@@ -140,7 +129,7 @@ F 3 "" H 8890 7975 50  0000 C CNN
 	1    8890 7975
 	1    0    0    -1  
 $EndComp
-Text Notes 870  2305 0    60   ~ 0
+Text Notes 775  3110 0    60   ~ 0
 PModUSBUART\n---\nPin 1 - RTS\nPin 2 - RXD\nPin 3 - TXD\nPin 4 - CTS\nPin 5 - GND\nPin 6 - VCC\n\nLCL3V3 - Board *gets* power from VPMOD\nSYS3V3 - Board *provides* power to VPMOD
 Text Notes 4490 4575 0    60   ~ 0
 VIO ==VPMOD\n Thus VPMOD always sets the IO voltage level\n\nREGIN - Regulator input - Feed from VUSB\n\nTake output at VDD to feed PMOD / VIO\n\n\nRegulator can supply 100mA output
@@ -298,13 +287,13 @@ VDD
 $Comp
 L R RINT1
 U 1 1 57F500C7
-P 1990 4225
-F 0 "RINT1" V 1940 3975 50  0000 C CNN
-F 1 "50" V 1990 4225 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 1920 4225 50  0001 C CNN
-F 3 "" H 1990 4225 50  0000 C CNN
-	1    1990 4225
-	0    1    1    0   
+P 2385 4195
+F 0 "RINT1" V 2335 3945 50  0000 C CNN
+F 1 "50" V 2385 4195 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2315 4195 50  0001 C CNN
+F 3 "" H 2385 4195 50  0000 C CNN
+	1    2385 4195
+	0    -1   1    0   
 $EndComp
 Text Label 11065 8015 0    60   ~ 0
 PMOD_INT
@@ -420,67 +409,67 @@ PMOD_RST
 $Comp
 L R RRST1
 U 1 1 57F52EB3
-P 1990 4325
-F 0 "RRST1" V 1940 4075 50  0000 C CNN
-F 1 "50" V 1990 4325 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 1920 4325 50  0001 C CNN
-F 3 "" H 1990 4325 50  0000 C CNN
-	1    1990 4325
-	0    1    1    0   
+P 2385 4295
+F 0 "RRST1" V 2335 4045 50  0000 C CNN
+F 1 "50" V 2385 4295 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2315 4295 50  0001 C CNN
+F 3 "" H 2385 4295 50  0000 C CNN
+	1    2385 4295
+	0    -1   1    0   
 $EndComp
 $Comp
 L R RIO2
 U 1 1 57F53D72
-P 1990 4525
-F 0 "RIO2" V 1940 4275 50  0000 C CNN
-F 1 "50" V 1990 4525 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 1920 4525 50  0001 C CNN
-F 3 "" H 1990 4525 50  0000 C CNN
-	1    1990 4525
-	0    1    1    0   
+P 2385 4495
+F 0 "RIO2" V 2335 4245 50  0000 C CNN
+F 1 "50" V 2385 4495 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2315 4495 50  0001 C CNN
+F 3 "" H 2385 4495 50  0000 C CNN
+	1    2385 4495
+	0    -1   1    0   
 $EndComp
 $Comp
 L R RTX1
 U 1 1 57F54253
-P 3340 4325
-F 0 "RTX1" V 3290 4575 50  0000 C CNN
-F 1 "50" V 3340 4325 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 3270 4325 50  0001 C CNN
-F 3 "" H 3340 4325 50  0000 C CNN
-	1    3340 4325
+P 2335 3595
+F 0 "RTX1" V 2285 3845 50  0000 C CNN
+F 1 "50" V 2335 3595 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2265 3595 50  0001 C CNN
+F 3 "" H 2335 3595 50  0000 C CNN
+	1    2335 3595
 	0    1    1    0   
 $EndComp
 $Comp
 L R RRX1
 U 1 1 57F543D4
-P 3340 4425
-F 0 "RRX1" V 3290 4675 50  0000 C CNN
-F 1 "50" V 3340 4425 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 3270 4425 50  0001 C CNN
-F 3 "" H 3340 4425 50  0000 C CNN
-	1    3340 4425
+P 2335 3695
+F 0 "RRX1" V 2285 3945 50  0000 C CNN
+F 1 "50" V 2335 3695 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2265 3695 50  0001 C CNN
+F 3 "" H 2335 3695 50  0000 C CNN
+	1    2335 3695
 	0    1    1    0   
 $EndComp
 $Comp
 L R RCTS1
 U 1 1 57F54490
-P 3340 4225
-F 0 "RCTS1" V 3290 4475 50  0000 C CNN
-F 1 "50" V 3340 4225 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 3270 4225 50  0001 C CNN
-F 3 "" H 3340 4225 50  0000 C CNN
-	1    3340 4225
+P 2335 3495
+F 0 "RCTS1" V 2285 3745 50  0000 C CNN
+F 1 "50" V 2335 3495 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2265 3495 50  0001 C CNN
+F 3 "" H 2335 3495 50  0000 C CNN
+	1    2335 3495
 	0    1    1    0   
 $EndComp
 $Comp
 L R RRTS1
 U 1 1 57F545A3
-P 3340 4525
-F 0 "RRTS1" V 3290 4775 50  0000 C CNN
-F 1 "50" V 3340 4525 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 3270 4525 50  0001 C CNN
-F 3 "" H 3340 4525 50  0000 C CNN
-	1    3340 4525
+P 2335 3795
+F 0 "RRTS1" V 2285 4045 50  0000 C CNN
+F 1 "50" V 2335 3795 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2265 3795 50  0001 C CNN
+F 3 "" H 2335 3795 50  0000 C CNN
+	1    2335 3795
 	0    1    1    0   
 $EndComp
 $Comp
@@ -556,13 +545,13 @@ $EndComp
 $Comp
 L R RIO1
 U 1 1 57F579B8
-P 1990 4425
-F 0 "RIO1" V 1940 4675 50  0000 C CNN
-F 1 "50" V 1990 4425 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 1920 4425 50  0001 C CNN
-F 3 "" H 1990 4425 50  0000 C CNN
-	1    1990 4425
-	0    -1   1    0   
+P 2385 4395
+F 0 "RIO1" V 2335 4645 50  0000 C CNN
+F 1 "50" V 2385 4395 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2315 4395 50  0001 C CNN
+F 3 "" H 2385 4395 50  0000 C CNN
+	1    2385 4395
+	0    1    1    0   
 $EndComp
 $Comp
 L JUMPER JPIO21
@@ -632,28 +621,9 @@ F 3 "" H 7340 7325 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	2290 4725 2240 4725
+	2125 4925 3990 4925
 Wire Wire Line
-	2240 4725 2240 4925
-Wire Wire Line
-	2240 4925 3990 4925
-Wire Wire Line
-	3140 4925 3140 4725
-Wire Wire Line
-	3140 4725 3090 4725
-Wire Wire Line
-	3090 4625 3190 4625
-Wire Wire Line
-	3190 4625 3190 5075
-Wire Wire Line
-	3190 5075 2190 5075
-Wire Wire Line
-	2190 5075 2190 4625
-Wire Wire Line
-	2190 4625 2290 4625
-Wire Wire Line
-	2690 5125 2690 5075
-Connection ~ 2690 5075
+	2200 3895 2200 5045
 Wire Wire Line
 	7990 7225 8740 7225
 Wire Wire Line
@@ -793,38 +763,37 @@ Wire Wire Line
 Wire Wire Line
 	12665 4515 12565 4515
 Wire Wire Line
-	3090 4225 3190 4225
+	2085 3495 2185 3495
 Wire Wire Line
-	3090 4325 3190 4325
+	2085 3595 2185 3595
 Wire Wire Line
-	3090 4425 3190 4425
+	2085 3695 2185 3695
 Wire Wire Line
-	3090 4525 3190 4525
+	2085 3795 2185 3795
 Wire Wire Line
-	3490 4225 4190 4225
+	2485 3495 3285 3495
 Wire Wire Line
-	4190 4325 3490 4325
+	3285 3595 2485 3595
 Wire Wire Line
-	3490 4425 4190 4425
+	2485 3695 3285 3695
 Wire Wire Line
-	4190 4525 3490 4525
+	3285 3795 2485 3795
 Wire Wire Line
-	2290 4225 2140 4225
+	2085 4195 2235 4195
 Wire Wire Line
-	2140 4325 2290 4325
+	2235 4295 2085 4295
 Wire Wire Line
-	2290 4425 2140 4425
+	2085 4395 2235 4395
 Wire Wire Line
-	2140 4525 2290 4525
+	2235 4495 2085 4495
 Wire Wire Line
-	1840 4225 1090 4225
+	2535 4195 3285 4195
 Wire Wire Line
-	1090 4325 1840 4325
+	3285 4295 2535 4295
 Wire Wire Line
-	1090 4425 1840 4425
+	3285 4395 2535 4395
 Wire Wire Line
-	1090 4525 1840 4525
-Connection ~ 3140 4925
+	3285 4495 2535 4495
 Wire Wire Line
 	4590 4925 4890 4925
 Wire Wire Line
@@ -1005,7 +974,7 @@ Text Notes 10965 6315 2    60   ~ 0
 Out >
 Text Notes 10965 7865 2    60   ~ 0
 In <
-Text Notes 3690 3025 0    60   ~ 0
+Text Notes 4995 2665 0    60   ~ 0
 FIXME: Host here means??
 $Comp
 L SW_PUSH SW1
@@ -1021,4 +990,27 @@ $EndComp
 Wire Wire Line
 	6140 6025 6290 6025
 Connection ~ 6290 6025
+Wire Wire Line
+	2125 3995 2125 4925
+Wire Wire Line
+	2125 4695 2085 4695
+Wire Wire Line
+	2200 4595 2085 4595
+Wire Wire Line
+	2200 3895 2085 3895
+Connection ~ 2200 4595
+Wire Wire Line
+	2085 3995 2125 3995
+Connection ~ 2125 4695
+$Comp
+L PMOD-Device-x2-Type-4A+-Expanded-UART P1
+U 1 1 583A9CC5
+P 1935 4045
+F 0 "P1" H 1805 3995 50  0000 C CNN
+F 1 "PMOD-Device-x2-Type-4A+-Expanded-UART" V 1575 3335 50  0001 L CNN
+F 2 "pmod-conn_6x2:pmod_pin_array_6x2" V 1485 3335 60  0001 L CNN
+F 3 "" H 1885 4345 60  0000 C CNN
+	1    1935 4045
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
